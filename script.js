@@ -1,7 +1,7 @@
 document.getElementById('create-league').onclick = function() {
     const name = prompt("Enter league name:");
     if (name) {
-        fetch('http://localhost:3000/leagues', {
+        fetch('/leagues', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name })
@@ -17,7 +17,7 @@ document.getElementById('create-league').onclick = function() {
 document.getElementById('view-leagues').onclick = loadLeagues;
 
 function loadLeagues() {
-    fetch('http://localhost:3000/leagues')
+    fetch('/leagues')
     .then(response => response.json())
     .then(data => {
         const mainContent = document.getElementById('main-content');
@@ -32,7 +32,7 @@ function loadLeagues() {
 }
 
 function viewTeams(leagueId) {
-    fetch(`http://localhost:3000/leagues/${leagueId}/teams`)
+    fetch(`/leagues/${leagueId}/teams`)
     .then(response => response.json())
     .then(data => {
         const mainContent = document.getElementById('main-content');
@@ -47,7 +47,7 @@ function viewTeams(leagueId) {
 }
 
 function viewPlayers(teamId) {
-    fetch(`http://localhost:3000/teams/${teamId}/players`)
+    fetch(`/teams/${teamId}/players`)
     .then(response => response.json())
     .then(data => {
         const mainContent = document.getElementById('main-content');
